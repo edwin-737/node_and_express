@@ -1,10 +1,4 @@
-var fortunes = [
-    "Conquer your fears or they will conquer you",  
-    "Rivers need springs",
-    "Do not fear what you don't know",
-    "You will have a pleasant surprise",
-    "Whenever possible, keep it simple"
-];
+var fortune = require('./lib/fortune.js');
 var express = require('express');
 // const res = require('express/lib/response');
 var app = express();
@@ -21,7 +15,7 @@ app.get('/',function(req,res){
 app.get('/about',function(req,res){
     // res.type('text/plain');
     // res.send('About Meadowlark Travel');
-    var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+    randomFortune = fortune.getFortune();
     res.render('about',{fortune: randomFortune});
     // res.end();
 });
