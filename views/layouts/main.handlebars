@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meadowlark Travel</title>
+    <title>Welcome To Meadowlark Travel</title>
+    {{{_sections.head}}}
+    {{#if showTests}}
+        <link rel="stylesheet" href="/vendor/mocha.css">
+    {{/if}}
+    <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
 </head>
 <body>
-    <img src="img/pool.jpg" alt="pool">
+    <div id = "nurseryRhyme">Click a button ...</div>
+    <button id = "btnNurseryRhyme">Generate a nursery rhyme</button>
+    <button id ="btnNurseryRhymeAjax">Generate a nursery rhyme from AJAX</button>
+    <img src="/img/pool.jpg" alt="pool">
     {{{body}}}
+    
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+    {{{_sections.jquery}}}
+    {{#if showTests}}
+        <div id = "mocha"></div>
+        <script src = "/vendor/mocha.js"></script>
+        <script src = "/vendor/chai.js"></script>
+        <script >
+            mocha.ui('tdd');
+            var assert = chai.assert;
+        </script>
+        <script src = "/qa/tests-global.js"></script>
+        {{#if pageTestScript}}
+            <script src = "{{pageTestScript}}"></script>
+        {{/if}}
+        <script>mocha.run();</script>
+    {{/if}}
 </body>
 </html>
